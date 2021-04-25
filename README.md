@@ -6,14 +6,27 @@ Para hacer esto, hace uso de la sesión HttpSession proporcionada por el framewo
 
 Para construir la aplicación y publicarla en DockerHub se usa el plugin maven JIB con el comando:
 
+- EDIT:
+Primero hay que desplegar los servicios para que pasen los test al compilar con maven (los pasos están debajo, al usar minikube para desplegar los servicios, hay que cambiar el tipo del servicio de webapp, minikube solo acepta ClusterIP o NodePort, si se usa el contexto de docker-desktop no hace falta porque si acepta el tipo LoadBalancer)
+
+- Además antes de ejecutar el comando, cambiar el puerto del método loadPage() en el test al puerto del servicio.
+
 `
-$ mvn package
+$ mvn clean package
 `
 
-Para desplegar la aplicación en Kubernetes se usa el comando
+Para desplegar la aplicación en Kubernetes se usan los comandos
+
+ - Si se quiere usar el contexto de minikube, primero:
+   `
+   $ minikube start
+   `
 
 `
-$ kubectl create -f kubernetes\webapp.yml
+$ kubectl apply -f k8s/db.yml
+`
+`
+$ kubectl apply -f k8s/webapp.yml
 `
 
 En minikube, se puede abrir el browser directamente apuntando al servicio:
