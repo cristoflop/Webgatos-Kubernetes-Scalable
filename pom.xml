@@ -105,7 +105,7 @@
                 <version>3.0.0</version>
                 <configuration>
                     <to>
-                        <image>cristoflop/webgatos2-scalable</image>
+                        <image>cloudappsteam/webgatos2-scalable</image>
                         <tags>
                             <tag>0.0.1</tag>
                         </tags>
