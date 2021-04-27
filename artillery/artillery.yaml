@@ -1,0 +1,24 @@
+# Configuracion del test script
+
+config:
+  target: 'http://localhost:8080'
+  tls:
+    rejectUnauthorized: false
+  plugins:
+    expect: { }
+  phases:
+    - duration: 60 # Duracion de la fase en segundos
+      arrivalRate: 2 # Numero de usuarios por segundo
+  ensure:
+    p95: 100 # El 95% de las conexiones tienen menos de 100ms de latencia
+    maxErrorRate: 0 # 0% de tasa de error
+  http:
+    pool: 5 # Numero de conexiones simultaneas
+scenarios:
+  - name: "Llamada a webgatos"
+    weight: 10 # 10/10 (100%) (la suma de todos los weight de los escenarios es el total)
+    flow:
+      - get:
+          url: "/"
+          expect:
+            - statusCode: 200
