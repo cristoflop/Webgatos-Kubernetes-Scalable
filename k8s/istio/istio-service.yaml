@@ -14,5 +14,5 @@ spec:
     route:
     - destination:
         port:
-          number: 8000
-        host: httpbin
+          number: 8080
+        host: webapp
