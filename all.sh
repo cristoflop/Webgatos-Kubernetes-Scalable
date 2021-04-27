@@ -9,8 +9,7 @@ kubectl apply -f k8s/webapp-two-pods.yaml
 artillery run artillery/artillery.yaml -o artillery/out-two-pods-caos.json
 curl -L https://istio.io/downloadIstio | sh -
 cd istio-1.9.4
-export PATH=$PWD/bin:$PATH
-istioctl install --set profile=demo -y
+bin/istioctl install --set profile=demo -y
 cd ..
 kubectl apply -f k8s/istio/istio.yaml
 kubectl apply -f k8s/istio/istio-service.yaml
