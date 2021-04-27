@@ -38,7 +38,7 @@ public class E2EHeadlessTest {
 		
 		String url = System.getProperty("weburl");
 		if (url == null) {
-			url = "http://localhost:31474/";
+			url = "http://localhost:8080/";
 		}
 		
 		loadPage(url);		
