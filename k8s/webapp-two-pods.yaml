@@ -39,7 +39,7 @@ metadata:
   labels:
     app: webapp
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: webapp
   ports:
