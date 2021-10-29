@@ -1,4 +1,4 @@
-# Testing
+# Escalabilidad y tolerancia a fallos
 
 Esta aplicación asigna un color aleatorio a cada usuario que se conecta. En las sucesivas peticiones a la web, se genera la página con el color asignado inicialmente.
 
@@ -11,29 +11,30 @@ Primero hay que desplegar los servicios para que pasen los test al compilar con 
 
 - Además antes de ejecutar el comando, cambiar el puerto del método loadPage() en el test al puerto del servicio.
 
-`
+```
 $ mvn clean package
-`
+```
 
 Para desplegar la aplicación en Kubernetes se usan los comandos
 
  - Si se quiere usar el contexto de minikube, primero:
-   `
-   $ minikube start
-   `
+```
+$ minikube start
+```
 
-`
+```
 $ kubectl apply -f k8s/db.yml
-`
-`
+```
+
+```
 $ kubectl apply -f k8s/webapp.yml
-`
+```
 
 En minikube, se puede abrir el browser directamente apuntando al servicio:
 
-`
+```
 $ minikube service webapp
-`
+```
 
 Para probar el funcionamiento, basta con abrir dos navegadores web y verificar que cada uno de ellos tiene un color diferente.
 
@@ -41,9 +42,16 @@ Para probar el funcionamiento, basta con abrir dos navegadores web y verificar q
 
 Para escalar la aplicación basta con pedir a Kubernetes más réplicas del pod:
 
-`
+```
 $ kubectl scale deployments/webapp --replicas=2
-`
+```
 
 Esta web está implementada con ```spring-session```, que mantiene los datos de la sesión en un servicio compartido externo, de forma que varias réplicas pueden acceder a los datos de la sesión. En concreto, en este ejemplo se usa MySQL como sitio centralizado para guardar los datos de la sesión de los usuarios.
  
+---
+
+#### Pruebas con artillery
+
+```
+Ejecutar fichero all.sh para ir realizando las pruebas de artillery, o ir ejecutando los comandos para ver el proceso mas detallado
+```
