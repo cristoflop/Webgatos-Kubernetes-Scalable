@@ -62,6 +62,4 @@ Esta web está implementada con ```spring-session```, que mantiene los datos de 
 Ejecutar fichero all.sh para ir realizando las pruebas de artillery, o ir ejecutando los comandos para ver el proceso mas detallado
 ```
 
-* Para descargar istio (descargar la version win.zip):
-
-[Url de istio](https://github.com/istio/istio/releases/tag/1.11.4)
+* Para descargar istio (descargar la version win.zip): [ - ISTIO - ](https://github.com/istio/istio/releases/tag/1.11.4)
