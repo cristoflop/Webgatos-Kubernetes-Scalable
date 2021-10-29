@@ -10,7 +10,9 @@ Para construir la aplicación y publicarla en DockerHub se usa el plugin maven J
 Primero hay que desplegar los servicios para que pasen los test al compilar con maven (los pasos están debajo, al usar minikube para desplegar los servicios, hay que cambiar el tipo del servicio de webapp, minikube solo acepta ClusterIP o NodePort, si se usa el contexto de docker-desktop no hace falta porque si acepta el tipo LoadBalancer)
 
 - Además antes de ejecutar el comando, cambiar el puerto del método loadPage() en el test al puerto del servicio.
-
+  Este puerto es el puerto del deployment si se usa el contexto de 'docker-desktop'
+  Si se usa minikube hay que obtener el puerto que externaliza el contenedor del servicio (mas abajo se explica como obtenerlo)
+  
 ```
 $ mvn clean package
 ```
@@ -23,7 +25,7 @@ $ minikube start
 ```
 
     MINIKUBE NO DESPLIEGA LOS SERVICIOS EN LOCALHOST, LOS DESPLIEGA EN SU CONTENEDOR INTERNO, Y LOS EXPONE A LOCALHOST EN UN PUERTO LIBRE ELEGIDO POR EL
-    PARA OBTENER ESE PUERTO, DESDE LENS, ACCEDEMOS A LOS SERVICIOS DESPLEGADOS, Y EN LOS SERVICIOS QUE USEN NODEPORT, HACEMOS CLIC EN EL PUERTO DISPONIBLE
+    PARA OBTENER ESE PUERTO, DESDE LENS, ACCEDEMOS A LOS SERVICIOS DESPLEGADOS, Y EN LOS SERVICIOS QUE USEN NODEPORT, HACEMOS CLIC EN EL PUERTO DISPONIBLE PARA QUE NOS ABRA EL NAVEGADOR CON EL PUERTO QUE SE HA EXTERNALIZADO
     - NOTA: EN MINIKUBE NO SE PUEDE USAR 'LoadBalancer'
 
 ```
